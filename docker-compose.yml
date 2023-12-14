@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+    db:
+      image: mariadb:10.4.28
+      restart: always
+      ports:
+        - "3306:3306"
+      environment:
+        MARIADB_ALLOW_EMPTY_ROOT_PASSWORD: true
+        MARIADB_ROOT_PASSWORD:
+        MARIADB_DATABASE: enter
+        MARIADB_USER: root
+        MARIADB_PASSWORD:
+      container_name: enter-bd
+      volumes:
+        - ./mariadb:/var/lib/mysql
+        - ./dev/sql:/docker-entrypoint-initdb.d
+
